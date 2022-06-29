@@ -1,4 +1,5 @@
-/**Class pour la création d'une galerie en fonction de la recherche*/
+/**Class pour la création d'une galerie en fonction de la recherche
+ */
 export class Research {
   /** Création de la recherche
    * @param {Array} recipes - Toutes les recettes
@@ -6,37 +7,23 @@ export class Research {
    */
   constructor(recipes, research) {
     this._recipes = recipes;
-    this._research = research.toLowerCase();
+    this._research = research.trim().toLowerCase();
   }
 
   /**Recherche des recettes correspondantes et ajout dans un tableau
    * @return {array} Un tableau des recettes correspondant à la recherche
    */
   researchSort() {
-    let recipesArray = [];
-    let recipesIndex = 0;
-
-    for (let i = 0; i < this._recipes.length; i++) {
-      if (
-        this._recipes[i].name.toLowerCase().includes(this._research) ||
-        this._recipes[i].description.toLowerCase().includes(this._research)
-      ) {
-        recipesArray[recipesIndex] = this._recipes[i];
-        recipesIndex++;
-      } else {
-        for (let y = 0; y < this._recipes[i].ingredients.length; y++) {
-          if (
-            this._recipes[i].ingredients[y].ingredient
-              .toLowerCase()
-              .includes(this._research)
-          ) {
-            recipesArray[recipesIndex] = this._recipes[i];
-            recipesIndex++;
-          }
-        }
-      }
-    }
-
+    let recipesArray = this._recipes.filter((recipe) => {
+      let ingredientArray = recipe.ingredients.map((item) =>
+        item.ingredient.toLowerCase()
+      );
+      return (
+        recipe.name.toLowerCase().includes(this._research) ||
+        recipe.description.toLowerCase().includes(this._research) ||
+        ingredientArray.join().includes(this._research)
+      );
+    });
     return recipesArray;
   }
 }
