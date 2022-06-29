@@ -1,4 +1,25 @@
 @media all {
+  /* Utiles */
+  .z-index--100 {
+    z-index: 100;
+  }
+
+  .opacity--medium {
+    opacity: 0.5;
+  }
+
+  .border-radius--full {
+    border-radius: 5px;
+  }
+
+  .border-radius--top {
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .border-radius--bottom {
+    border-radius: 0px 0px 5px 5px;
+  }
+
   .gris {
     background-color: #c7bebe;
     width: 100%;
@@ -17,6 +38,18 @@
     background-color: #ed6454;
   }
 
+  .display-none {
+    display: none;
+  }
+
+  .display-block {
+    display: block;
+  }
+
+  .display-inline {
+    display: inline-block;
+  }
+
   input:focus-visible {
     outline: none;
   }
@@ -25,12 +58,19 @@
     overflow: hidden;
   }
 
+  button {
+    border: none;
+    padding: 0;
+  }
+
+  /* Corps  et général */
   body {
     font-family: 'lato', 'Arial', 'Sans-Serif';
     line-height: 1;
     box-sizing: border-box;
   }
 
+  /* Paragraphes */
   p {
     font-family: 'Roboto', 'Arial', 'Sans-Serif';
     -webkit-margin-before: 0;
@@ -40,14 +80,23 @@
     font-size: 0.8em;
   }
 
+  /* Liste */
   ul {
     list-style: none;
+  }
+
+  /* Header */
+
+  /* Logo */
+  .logo__link {
+    text-decoration: none;
   }
 
   header img {
     width: 268px;
   }
 
+  /* Barre de recherche */
   .searchBar input {
     background-color: #e7e7e7;
     border: none;
@@ -57,7 +106,8 @@
   }
 
   .searchBar input:focus,
-  .searchBar input:active {
+  .searchBar input:active,
+  .searchBar input:hover {
     outline: none;
     box-shadow: inset 2px 2px 5px #b7b6b66c;
   }
@@ -65,41 +115,174 @@
   .searchBar,
   .ingredients,
   .ustensils,
-  .appareils {
+  .appliances {
     position: relative;
   }
 
-  .searchBar i {
+  .searchBar button {
     position: absolute;
     top: 55%;
     right: 5%;
   }
 
-  .ingredients i,
-  .ustensils i,
-  .appareils i {
-    position: absolute;
-    top: 55%;
-    right: 3%;
-    color: #ffffff;
-    margin-right: 5px;
+  /* Tags sélectionnés */
+  #tags {
+    padding-left: 0;
+
+    -webkit-margin-before: 1em;
+    margin-block-start: 1em;
+    -webkit-margin-after: 0;
+    margin-block-end: 0;
   }
 
-  .ingredients input,
-  .ustensils input,
-  .appareils input {
+  .tag__item {
+    color: white;
+    margin-right: 1em;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    padding: 0.5em 1em 0.5em 0.8em;
+  }
+
+  .tag__item--ingredient {
+    background-color: #3282f7;
+  }
+
+  .tag__item--ustensil {
+    background-color: #ed6454;
+  }
+
+  .tag__item--appliance {
+    background-color: #68d9a4;
+  }
+
+  .svg__close {
+    cursor: pointer;
+    position: relative;
+    left: 0.5em;
+  }
+
+  /* Listes des tags */
+  .tags__button {
+    position: absolute;
+    top: 35px;
+    right: 3%;
+    background-color: transparent;
+    margin-right: 5px;
+    z-index: 50;
+  }
+
+  .tags__button i {
+    color: #ffffff;
+  }
+
+  .tags__input {
     border: none;
     width: 100%;
-    border-radius: 5px;
     color: #ffffff;
+    position: relative;
+    transition: 50ms ease-in-out;
+  }
+
+  #ingredients:hover,
+  #ingredients:active,
+  #ingredients:focus {
+    transition: 50ms ease-in-out;
+    box-shadow: inset 6px 6px 17px #3172d3, inset -6px -6px 17px #378fff;
+  }
+
+  #appliances:hover,
+  #appliances:active,
+  #appliances:focus {
+    transition: 50ms ease-in-out;
+    box-shadow: inset 6px 6px 17px #60c897, inset -6px -6px 17px #70eab1;
+  }
+
+  #ustensils:hover,
+  #ustensils:active,
+  #ustensils:focus {
+    transition: 50ms ease-in-out;
+    box-shadow: inset 6px 6px 17px #dc5748, inset -6px -6px 17px #ff6d5c;
+  }
+
+  .tags__input::-webkit-input-placeholder {
+    color: #ffffff;
+  }
+
+  .tags__input:focus::-webkit-input-placeholder {
+    color: #ffffff7d;
+  }
+
+  .tags__input--open::-webkit-input-placeholder {
+    color: #ffffff7d;
+  }
+
+  .ingredients__list,
+  .ustensils__list,
+  .appliances__list {
+    position: absolute;
+    padding-bottom: 10px;
+  }
+
+  .ingredients__list {
+    background-color: #3282f7;
+  }
+
+  .ustensils__list {
+    background-color: #ed6454;
+  }
+
+  .appliances__list {
+    background-color: #68d9a4;
+  }
+
+  .ustensil__item,
+  .ingredient__item,
+  .appliance__item {
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Items dans les listes */
+  .ingredient__item {
+    width: 33%;
+  }
+
+  .ustensil__item {
+    width: 45%;
+  }
+
+  .ustensil__item:hover {
+    background-color: #f38f84;
+  }
+
+  .ingredient__item:hover {
+    background-color: #64a0f9;
+  }
+
+  .appliance__item:hover {
+    background-color: #85dcb3;
+  }
+
+  .ingredients__error,
+  .ustensils__error,
+  .appliances__error {
+    color: white;
+    padding: 1em;
   }
 
   /* Recettes */
   .recipe {
     height: 410px;
     width: 100%;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
     background-color: #e7e7e7;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+  }
+
+  .recipe:hover {
+    box-shadow: 2px 2px 10px 5px #9b9a9a5d;
   }
 
   .recipe .container {
@@ -132,15 +315,28 @@
     font-weight: 700;
     font-family: 'Lato', Arial, sans-serif;
   }
+
+  .errorSearch {
+    margin: auto;
+    font-size: 1.2em;
+    text-align: center;
+    padding-top: 5%;
+    font-style: italic;
+  }
 }
 
 @media (max-width: 1400px) {
   .recipe {
     height: 430px;
   }
+
   h1,
   h2 {
     font-size: 0.9em;
+  }
+
+  .ingredient__item {
+    width: 30%;
   }
 }
 
@@ -148,6 +344,7 @@
   .recipe {
     height: 450px;
   }
+
   h1,
   h2 {
     font-size: 1em;
@@ -158,6 +355,7 @@
   .recipe {
     height: 470px;
   }
+
   h1,
   h2 {
     font-size: 1.2em;
@@ -165,6 +363,18 @@
 
   p {
     font-size: 1em;
+  }
+
+  .appliance__item {
+    width: 45%;
+    padding-left: 10px;
+    padding-right: 0;
+  }
+
+  .ustensil__item {
+    width: 48%;
+    padding-left: 8px;
+    padding-right: 0;
   }
 }
 
@@ -174,7 +384,7 @@
   }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 776px) {
   .recipe {
     height: 600px;
   }
@@ -189,7 +399,14 @@
   h2 {
     font-size: 1.2em;
   }
+
   p {
     font-size: 1em;
+  }
+
+  .ingredient__item,
+  .ustensil__item,
+  .appliance__item {
+    width: 30%;
   }
 }
