@@ -1,23 +1,32 @@
-import { recipes } from "../data/recipes.js";
-
-/**Fonction pour créer le tableaux des photographes
- * @param {Array} recipes - Toutes les recettes
- */
-function displayData(recipes) {
-  const recipesSection = document.querySelector("#recipes");
-
-  //Utilisation du constructor pattern pour récupérer les différents items
-  recipes.forEach((recipe) => {
-    const getRecipe = new GetRecipes(recipe);
-    const Template = new RecipeCard(getRecipe);
-    recipesSection.appendChild(Template.createRecipeCard());
-  });
-}
+import { recipes } from '../data/recipes.js';
+import { crossOpen, crossClose } from './utility/utils.js';
+import { searchBar } from './modules/searchBar.js';
+import { gallery } from './modules/gallery.js';
+import { openList, closeList } from './utility/openCloseTagsList.js';
 
 /** FONCTION D INITIATION DE LA PAGE D ACCUEIL */
 async function init() {
-  // Création du tableau des recettes
-  displayData(recipes);
+  const tagsBtn = document.querySelectorAll('.tags__button');
+
+  // Initiation de la galerie des recettes
+  gallery(recipes);
+
+  // Ouvrir et fermer les onglets lors du click sur la flèche
+  tagsBtn.forEach((button) =>
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      button.innerHTML = '';
+      if (button.getAttribute('class') != 'tags__button open') {
+        crossOpen(button);
+        openList(button);
+      } else {
+        crossClose(button);
+        closeList(button);
+      }
+    })
+  );
+
+  searchBar(recipes);
 }
 
 init();
