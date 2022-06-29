@@ -2,3 +2,6 @@ node_modules
 
 soutenance
 ./soutenance
+
+webpack.config.js
+./webpack.config.js
