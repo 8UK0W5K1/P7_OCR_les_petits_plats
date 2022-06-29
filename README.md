@@ -1,1 +1,1 @@
-# P7_LesPetitsPlats
+Projet 7 OPENCLASSROOMS - LES PETITS PLATS
